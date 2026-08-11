@@ -28,9 +28,9 @@ const ManageShows = () => {
         movieApi.getMovies({ limit: 100 }),
         cinemaApi.getCinemas()
       ]);
-      setShows(showsRes.data);
-      setMovies(moviesRes.data.movies);
-      setCinemas(cinemasRes.data);
+      setShows(showsRes.data || []);
+      setMovies(moviesRes.data?.movies || []);
+      setCinemas(cinemasRes.data || []);
     } catch (err) {
       toast.error('Failed to load data');
     } finally {
@@ -74,11 +74,11 @@ const ManageShows = () => {
         movieId: show.movieId?._id || '',
         cinemaId: show.cinemaId?._id || '',
         screenId: show.screenId?._id || '',
-        date: show.date.split('T')[0],
-        time: show.time,
-        priceStandard: show.price.standard,
-        pricePremium: show.price.premium,
-        priceVip: show.price.vip
+        date: show.date ? show.date.split('T')[0] : '',
+        time: show.time || '',
+        priceStandard: show.price?.standard || 350,
+        pricePremium: show.price?.premium || 500,
+        priceVip: show.price?.vip || 800
       });
     } else {
       setFormData({
@@ -166,10 +166,10 @@ const ManageShows = () => {
                 <td>{show.cinemaId?.name || 'Unknown Cinema'}</td>
                 <td>{show.screenId?.screenName || 'Unknown Screen'}</td>
                 <td>
-                  <div>{new Date(show.date).toLocaleDateString()}</div>
-                  <div style={{color: '#fff'}}>{show.time}</div>
+                  <div>{show.date ? new Date(show.date).toLocaleDateString() : 'Invalid Date'}</div>
+                  <div style={{color: '#fff'}}>{show.time || 'N/A'}</div>
                 </td>
-                <td>Rs. {show.price.standard}</td>
+                <td>Rs. {show.price?.standard || 350}</td>
                 <td>
                   <div className="action-buttons">
                     <button className="btn-outline" onClick={() => openModal(show)}><Edit2 size={16} /></button>
