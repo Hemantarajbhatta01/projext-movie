@@ -1,0 +1,101 @@
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  width: 100%;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.nav-right {
+  justify-content: flex-end;
+}
+
+.logo {
+  flex: 1;
+  text-align: center;
+}
+
+.logo h2 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--bg-button);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  border: 1px solid var(--border);
+}
+
+.icon-btn:hover {
+  background-color: var(--bg-button-hover);
+  color: var(--text-main);
+}
+
+.filter-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-button);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.filter-pill.dropdown {
+  color: var(--text-main);
+  background-color: var(--bg-panel-light);
+}
+
+.close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  width: 16px;
+  height: 16px;
+}
+
+.close-btn:hover {
+  color: var(--text-main);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-button);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 4px 12px 4px 4px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}

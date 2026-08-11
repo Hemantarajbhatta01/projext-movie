@@ -1,0 +1,88 @@
+.date-selector-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 32px 24px;
+  width: 100%;
+}
+
+.calendar-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background-color: var(--bg-button);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.dates-row {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+}
+
+.date-item {
+  flex: 1;
+  height: 64px;
+  border-radius: 16px;
+  background-color: var(--bg-button);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-muted);
+}
+
+.date-item .day {
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.date-item .date {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.date-item:hover {
+  background-color: var(--bg-button-hover);
+}
+
+.date-item.active {
+  background: var(--accent-gradient);
+  border-color: var(--accent);
+  color: white;
+}
+
+.date-item.active .day, .date-item.active .date {
+  color: white;
+}
+
+.date-nav-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background-color: var(--bg-button);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.nav-btn:hover {
+  background-color: var(--bg-button-hover);
+  color: var(--text-main);
+}

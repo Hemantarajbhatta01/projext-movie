@@ -1,0 +1,250 @@
+.movie-details-panel {
+  padding: 0 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.movie-header {
+  display: flex;
+  gap: 24px;
+}
+
+.poster-container {
+  position: relative;
+  width: 180px;
+  height: 250px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-btn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(46, 131, 251, 0.4);
+  transition: transform 0.2s;
+}
+
+.play-btn:hover {
+  transform: scale(1.05);
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-info h1 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+}
+
+.movie-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.movie-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.movie-ratings {
+  display: flex;
+  gap: 32px;
+  margin-top: auto;
+}
+
+.rating {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rating .label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.rating .value {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.rating .small {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--border);
+  width: 100%;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.time-pills {
+  display: flex;
+  gap: 12px;
+}
+
+.time-pill {
+  flex: 1;
+  padding: 16px 0;
+  border-radius: 12px;
+  background-color: var(--bg-button);
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.time-pill:hover {
+  background-color: var(--bg-button-hover);
+  color: var(--text-main);
+}
+
+.time-pill.active {
+  background-color: var(--seat-available);
+  border-color: var(--accent);
+  color: var(--text-main);
+}
+
+.tickets-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.ticket-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: var(--bg-button);
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.ticket-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-main);
+}
+
+.ticket-info .small {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.ticket-info .bold {
+  font-weight: 600;
+}
+
+.ticket-info .ml {
+  margin-left: 8px;
+}
+
+.ticket-price {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+}
+
+.remove-btn {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-btn:hover {
+  color: var(--text-main);
+}
+
+.checkout-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 16px;
+}
+
+.total-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.total-price .label {
+  color: var(--text-muted);
+  margin-right: 4px;
+}
+
+.total-price .currency {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.total-price .amount {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--text-main);
+  letter-spacing: -1px;
+}
+
+.buy-btn {
+  background: var(--accent);
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 16px 48px;
+  border-radius: 24px;
+  transition: all 0.2s;
+  box-shadow: 0 8px 20px rgba(46, 131, 251, 0.3);
+}
+
+.buy-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(46, 131, 251, 0.4);
+}
