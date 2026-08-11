@@ -93,7 +93,9 @@ function BookingPage() {
     }
   }, [times]);
 
-  const rows = ['G', 'F', 'E', 'D', 'C', 'B', 'A'];
+  // Dynamically calculate rows and columns from available seats
+  const dynamicRows = [...new Set(seats.map(s => s.row))].sort().reverse();
+  const maxCols = Math.max(...seats.map(s => s.number), 0);
   const bookedSeatIds = seats.filter(s => s.isBooked).map(s => `${s.row}${s.number}`);
 
   const handleSeatClick = (row, num) => {
@@ -295,11 +297,11 @@ function BookingPage() {
               </div>
             ) : (
               <div className="seat-grid-container">
-                {rows.map(row => (
+                {dynamicRows.map(row => (
                   <div key={row} className="grid-row">
                     <span className="r-indicator">{row}</span>
                     <div className="grid-seats">
-                      {[...Array(16)].map((_, i) => {
+                      {[...Array(maxCols)].map((_, i) => {
                         const num = i + 1;
                         const seatId = `${row}${num}`;
                         const isBooked = bookedSeatIds.includes(seatId);

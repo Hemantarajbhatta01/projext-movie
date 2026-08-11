@@ -91,7 +91,7 @@ export const getShowSeats = async (req, res) => {
 
   const rows = show.screenId?.rows || 7;
   const cols = show.screenId?.columns || 16;
-  const rowNames = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'].slice(0, rows);
+  const rowNames = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').slice(0, rows);
 
   const seats = [];
   for (let r = 0; r < rows; r++) {
