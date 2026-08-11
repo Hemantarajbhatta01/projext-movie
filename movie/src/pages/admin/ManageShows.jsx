@@ -160,7 +160,7 @@ const ManageShows = () => {
             </tr>
           </thead>
           <tbody>
-            {shows.map(show => (
+            {(Array.isArray(shows) ? shows : []).map(show => (
               <tr key={show._id}>
                 <td style={{fontWeight: 500}}>{show.movieId?.title || 'Unknown Movie'}</td>
                 <td>{show.cinemaId?.name || 'Unknown Cinema'}</td>
@@ -198,7 +198,7 @@ const ManageShows = () => {
                   <label>Movie</label>
                   <select name="movieId" value={formData.movieId} onChange={handleChange} required>
                     <option value="" disabled>Select a movie</option>
-                    {movies.map(m => (
+                    {(Array.isArray(movies) ? movies : []).map(m => (
                       <option key={m._id} value={m._id}>{m.title}</option>
                     ))}
                   </select>
@@ -209,7 +209,7 @@ const ManageShows = () => {
                     <label>Cinema</label>
                     <select name="cinemaId" value={formData.cinemaId} onChange={handleChange} required>
                       <option value="" disabled>Select a cinema</option>
-                      {cinemas.map(c => (
+                      {(Array.isArray(cinemas) ? cinemas : []).map(c => (
                         <option key={c._id} value={c._id}>{c.name} - {c.city}</option>
                       ))}
                     </select>
@@ -218,7 +218,7 @@ const ManageShows = () => {
                     <label>Screen</label>
                     <select name="screenId" value={formData.screenId} onChange={handleChange} required disabled={!formData.cinemaId || screens.length === 0}>
                       {screens.length === 0 ? <option value="">No screens available</option> : null}
-                      {screens.map(s => (
+                      {(Array.isArray(screens) ? screens : []).map(s => (
                         <option key={s._id} value={s._id}>{s.screenName} ({s.screenType})</option>
                       ))}
                     </select>
