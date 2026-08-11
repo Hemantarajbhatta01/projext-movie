@@ -71,9 +71,9 @@ const ManageShows = () => {
     setCurrentShow(show);
     if (show) {
       setFormData({
-        movieId: show.movieId._id,
-        cinemaId: show.cinemaId._id,
-        screenId: show.screenId._id,
+        movieId: show.movieId?._id || '',
+        cinemaId: show.cinemaId?._id || '',
+        screenId: show.screenId?._id || '',
         date: show.date.split('T')[0],
         time: show.time,
         priceStandard: show.price.standard,
@@ -162,9 +162,9 @@ const ManageShows = () => {
           <tbody>
             {shows.map(show => (
               <tr key={show._id}>
-                <td style={{fontWeight: 500}}>{show.movieId.title}</td>
-                <td>{show.cinemaId.name}</td>
-                <td>{show.screenId.screenName}</td>
+                <td style={{fontWeight: 500}}>{show.movieId?.title || 'Unknown Movie'}</td>
+                <td>{show.cinemaId?.name || 'Unknown Cinema'}</td>
+                <td>{show.screenId?.screenName || 'Unknown Screen'}</td>
                 <td>
                   <div>{new Date(show.date).toLocaleDateString()}</div>
                   <div style={{color: '#fff'}}>{show.time}</div>
