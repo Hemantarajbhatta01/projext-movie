@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { useBooking } from '../context/BookingContext';
 import * as bookingApi from '../api/bookingApi';
 import { toast } from 'react-hot-toast';
@@ -12,8 +12,7 @@ const PaymentPage = () => {
   const [loading, setLoading] = useState(false);
   
   if (!bookingData.show || !bookingData.seats || bookingData.seats.length === 0) {
-    navigate('/movies');
-    return null;
+    return <Navigate to="/movies" replace />;
   }
 
   const handlePayment = async () => {
@@ -52,8 +51,10 @@ const PaymentPage = () => {
         seatLabels: bookingData.seats.map(s => `${s.row}${s.number}`),
       };
       
+      // Navigate FIRST, then clear booking data to avoid race condition
+      // where clearing triggers a re-render and the guard redirects to /movies
+      navigate('/success', { state: { booking: successData }, replace: true });
       clearBooking();
-      navigate('/success', { state: { booking: successData } });
     } catch (error) {
       toast.error(error.response?.data?.message || 'Payment failed');
     } finally {
