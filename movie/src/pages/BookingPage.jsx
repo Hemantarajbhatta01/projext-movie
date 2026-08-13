@@ -286,62 +286,64 @@ function BookingPage() {
 
           {/* Right Panel (Seat Map) */}
           <div className="zootopia-right-panel">
-            <div className="screen-wrapper">
-              <div className="screen-curve"></div>
-              <div className="screen-text">S C R E E N</div>
-            </div>
-
-            {!selectedShow ? (
-              <div style={{textAlign: 'center', color: '#8b95a5', padding: '3rem 1rem'}}>
-                Select a date and time to view seats
+            <div className="right-panel-scroll-content">
+              <div className="screen-wrapper">
+                <div className="screen-curve"></div>
+                <div className="screen-text">S C R E E N</div>
               </div>
-            ) : (
-              <div className="seat-grid-container">
-                {dynamicRows.map(row => (
-                  <div key={row} className="grid-row">
-                    <span className="r-indicator">{row}</span>
-                    <div className="grid-seats">
-                      {[...Array(maxCols)].map((_, i) => {
-                        const num = i + 1;
-                        const seatId = `${row}${num}`;
-                        const isBooked = bookedSeatIds.includes(seatId);
-                        const isSelected = selectedSeats.some(s => s.id === seatId);
-                        
-                        let sClass = 's-btn';
-                        if (isBooked) sClass += ' booked';
-                        else if (isSelected) sClass += ' selected';
-                        else sClass += ' available';
 
-                        return (
-                          <button 
-                            key={num} 
-                            className={sClass}
-                            onClick={() => handleSeatClick(row, num)}
-                            disabled={isBooked}
-                          >
-                            {num}
-                          </button>
-                        );
-                      })}
+              {!selectedShow ? (
+                <div style={{textAlign: 'center', color: '#8b95a5', padding: '3rem 1rem'}}>
+                  Select a date and time to view seats
+                </div>
+              ) : (
+                <div className="seat-grid-container">
+                  {dynamicRows.map(row => (
+                    <div key={row} className="grid-row">
+                      <span className="r-indicator">{row}</span>
+                      <div className="grid-seats">
+                        {[...Array(maxCols)].map((_, i) => {
+                          const num = i + 1;
+                          const seatId = `${row}${num}`;
+                          const isBooked = bookedSeatIds.includes(seatId);
+                          const isSelected = selectedSeats.some(s => s.id === seatId);
+                          
+                          let sClass = 's-btn';
+                          if (isBooked) sClass += ' booked';
+                          else if (isSelected) sClass += ' selected';
+                          else sClass += ' available';
+
+                          return (
+                            <button 
+                              key={num} 
+                              className={sClass}
+                              onClick={() => handleSeatClick(row, num)}
+                              disabled={isBooked}
+                            >
+                              {num}
+                            </button>
+                          );
+                        })}
+                      </div>
+                      <span className="r-indicator">{row}</span>
                     </div>
-                    <span className="r-indicator">{row}</span>
-                  </div>
-                ))}
-              </div>
-            )}
+                  ))}
+                </div>
+              )}
 
-            <div className="seat-legend-block">
-              <div className="l-item">
-                <div className="l-box selected"></div>
-                <span>Selected</span>
-              </div>
-              <div className="l-item">
-                <div className="l-box available"></div>
-                <span>Available</span>
-              </div>
-              <div className="l-item">
-                <div className="l-box booked"></div>
-                <span>Booked</span>
+              <div className="seat-legend-block">
+                <div className="l-item">
+                  <div className="l-box selected"></div>
+                  <span>Selected</span>
+                </div>
+                <div className="l-item">
+                  <div className="l-box available"></div>
+                  <span>Available</span>
+                </div>
+                <div className="l-item">
+                  <div className="l-box booked"></div>
+                  <span>Booked</span>
+                </div>
               </div>
             </div>
           </div>
