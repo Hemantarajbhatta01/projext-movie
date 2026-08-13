@@ -194,21 +194,134 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
+/* RESPONSIVE */
 @media (max-width: 1024px) {
   .hero-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 1.5rem;
   }
   .hero-poster-wrapper {
     transform: translateY(2rem);
     width: 200px;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
   }
   .meta-tags, .genres {
     justify-content: center;
+    flex-wrap: wrap;
   }
   .showtimes-section h2, .cinemas-list {
     padding-left: 0;
+  }
+  .hero-info {
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .detail-hero {
+    height: 50vh;
+    min-height: 450px;
+    padding: 3rem 5%;
+  }
+
+  .hero-info h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-poster-wrapper {
+    width: 150px;
+    border-width: 3px;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .showtimes-section {
+    padding: 2rem 5%;
+    margin-top: 2rem;
+  }
+
+  .showtimes-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cinema-block {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .detail-hero {
+    height: auto;
+    padding: 5rem 1.5rem 2rem;
+  }
+
+  .hero-poster-wrapper {
+    width: 130px;
+    transform: translateY(0);
+    margin-bottom: 1rem;
+  }
+
+  .hero-info h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .meta-tags {
+    gap: 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  .meta-tags span {
+    gap: 0.3rem;
+  }
+
+  .genre-pill {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    -webkit-line-clamp: 4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .showtimes-section {
+    padding: 1.5rem 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .cinema-block {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .cinema-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .cinema-header p {
+    font-size: 0.85rem;
+  }
+
+  .shows-grid {
+    gap: 0.75rem;
+  }
+
+  .show-pill {
+    padding: 0.6rem 1rem;
+    flex: 1 1 calc(50% - 0.75rem);
+    min-width: 100px;
+  }
+
+  .show-time {
+    font-size: 1.1rem;
   }
 }

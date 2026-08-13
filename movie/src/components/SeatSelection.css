@@ -180,3 +180,64 @@
 .seat-preview.booked {
   background-color: var(--seat-booked);
 }
+
+@media (max-width: 768px) {
+  .seat-selection-panel {
+    padding: 24px;
+    border-radius: 24px;
+  }
+  .seat-grid {
+    gap: 4px;
+  }
+  .seat {
+    width: 20px;
+    height: 24px;
+  }
+  .seat::after {
+    width: 14px;
+  }
+  .seat-grid button:nth-child(8) {
+    margin-right: 8px;
+  }
+  .legend-container {
+    gap: 16px;
+    margin-top: 40px;
+    padding-top: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .seat-selection-panel {
+    padding: 16px;
+    border-radius: 16px;
+  }
+  .seat-grid {
+    gap: 2px;
+  }
+  .seat {
+    width: 16px;
+    height: 20px;
+    border-radius: 2px 2px 6px 6px;
+  }
+  .seat::after {
+    width: 10px;
+    bottom: -3px;
+    height: 3px;
+  }
+  .seat-grid button:nth-child(8) {
+    margin-right: 6px;
+  }
+  .legend-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+    padding-top: 16px;
+  }
+  .screen-container {
+    margin-bottom: 32px;
+  }
+  .seats-container {
+    gap: 8px;
+  }
+}

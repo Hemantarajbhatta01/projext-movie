@@ -86,3 +86,32 @@
   background-color: var(--bg-button-hover);
   color: var(--text-main);
 }
+
+@media (max-width: 768px) {
+  .date-selector-container {
+    padding: 0 20px 20px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .date-selector-container {
+    padding: 0 16px 16px;
+    gap: 8px;
+  }
+  .calendar-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+  }
+  .date-item {
+    height: 56px;
+    border-radius: 12px;
+  }
+  .date-item .day {
+    font-size: 11px;
+  }
+  .date-item .date {
+    font-size: 16px;
+  }
+}

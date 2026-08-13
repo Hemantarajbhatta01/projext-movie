@@ -99,3 +99,25 @@
   justify-content: center;
   color: white;
 }
+
+@media (max-width: 768px) {
+  .filter-pill {
+    display: none;
+  }
+  .top-nav {
+    padding: 16px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-nav {
+    padding: 12px 16px;
+  }
+  .icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .logo h2 {
+    font-size: 20px;
+  }
+}

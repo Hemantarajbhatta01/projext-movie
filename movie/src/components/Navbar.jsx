@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Bell, User, Play } from 'lucide-react';
+import { Search, Bell, User, Play, Menu, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // Optional: add scroll listener to change navbar background when scrolling down
   React.useEffect(() => {
@@ -16,6 +17,18 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const closeMenu = () => setMenuOpen(false);
+
+  // Lock body scroll when mobile menu is open
+  React.useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
 
   return (
     <nav className={`main-navbar ${scrolled ? 'scrolled' : ''}`}>
@@ -49,6 +62,50 @@ const Navbar = () => {
             </div>
           ) : (
             <Link to="/login" className="login-link">Login</Link>
+          )}
+
+          {/* Hamburger Button (mobile only) */}
+          <button className="hamburger-btn" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={`mobile-menu-overlay ${menuOpen ? 'open' : ''}`} 
+        onClick={closeMenu}
+      />
+
+      {/* Mobile Menu Drawer */}
+      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+        <button className="mobile-menu-close" onClick={closeMenu} aria-label="Close menu">
+          <X size={24} />
+        </button>
+
+        <div className="mobile-nav-links">
+          <Link to="/" onClick={closeMenu}>Home</Link>
+          <Link to="/movies" onClick={closeMenu}>Movies</Link>
+          <Link to="/series" onClick={closeMenu}>Series</Link>
+          <Link to="/kids" onClick={closeMenu}>Kids</Link>
+          
+          <div className="mobile-menu-divider" />
+
+          {user ? (
+            <>
+              {user.role === 'admin' && (
+                <Link to="/admin" className="admin-link-mobile" onClick={closeMenu}>
+                  Admin Panel
+                </Link>
+              )}
+              <Link to="/bookings" onClick={closeMenu}>My Bookings</Link>
+              <div className="mobile-menu-divider" />
+              <button className="logout-btn-mobile" onClick={() => { logout(); closeMenu(); }}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link to="/login" onClick={closeMenu}>Login</Link>
           )}
         </div>
       </div>

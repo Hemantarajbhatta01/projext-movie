@@ -134,6 +134,8 @@
   font-size: 14px;
   transition: all 0.2s;
   border: 1px solid transparent;
+  cursor: pointer;
+  text-align: center;
 }
 
 .time-pill:hover {
@@ -195,6 +197,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .remove-btn:hover {
@@ -241,10 +246,62 @@
   border-radius: 24px;
   transition: all 0.2s;
   box-shadow: 0 8px 20px rgba(46, 131, 251, 0.3);
+  border: none;
+  cursor: pointer;
 }
 
 .buy-btn:hover {
   background: var(--accent-hover);
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(46, 131, 251, 0.4);
+}
+
+@media (max-width: 768px) {
+  .movie-details-panel {
+    padding: 0 20px 20px;
+  }
+  .movie-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .movie-ratings {
+    justify-content: center;
+    margin-top: 16px;
+  }
+  .checkout-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    text-align: center;
+  }
+  .total-price {
+    justify-content: center;
+  }
+  .tickets-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-details-panel {
+    padding: 0 16px 16px;
+  }
+  .poster-container {
+    width: 140px;
+    height: 200px;
+  }
+  .movie-info h1 {
+    font-size: 24px;
+  }
+  .movie-meta {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .time-pills {
+    flex-wrap: wrap;
+  }
+  .time-pill {
+    flex: 1 1 calc(50% - 6px);
+  }
 }

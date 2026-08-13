@@ -9,6 +9,13 @@
   margin: 0 auto;
 }
 
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
 .payment-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -41,6 +48,7 @@
 .summary-movie h3 {
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
+  color: var(--text-primary);
 }
 
 .summary-movie p {
@@ -65,6 +73,7 @@
 .detail-row span:last-child {
   color: var(--text-primary);
   font-weight: 500;
+  text-align: right;
 }
 
 .summary-total {
@@ -136,6 +145,8 @@
   border-radius: 12px;
   font-size: 1.2rem;
   font-weight: 700;
+  border: none;
+  cursor: pointer;
   transition: all 0.2s;
 }
 
@@ -157,8 +168,63 @@
   margin-top: 1rem;
 }
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .payment-content {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .payment-page {
+    padding: 2rem 1.5rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .summary-card {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .summary-movie {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .summary-total {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .total-price {
+    font-size: 1.5rem;
+  }
+
+  .option-content {
+    padding: 1.2rem;
+  }
+  
+  .option-content span {
+    font-size: 0.95rem;
+  }
+
+  .pay-btn {
+    padding: 1rem;
+    font-size: 1.1rem;
   }
 }

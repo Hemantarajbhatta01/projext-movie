@@ -79,6 +79,8 @@
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.5px;
+  text-decoration: none;
+  color: #fff;
 }
 
 .user-profile-btn {
@@ -89,6 +91,8 @@
   padding: 0.3rem 0.5rem 0.3rem 0.3rem;
   border-radius: 30px;
   color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
 .user-profile-btn img {
@@ -130,17 +134,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .dates-list {
   display: flex;
   gap: 0.8rem;
-  overflow-x: hidden;
+  overflow-x: auto;
   flex: 1;
+  scrollbar-width: none;
+  padding-bottom: 0.5rem;
+}
+.dates-list::-webkit-scrollbar {
+  display: none;
 }
 
 .date-box {
-  flex: 1;
+  flex: 0 0 auto;
   min-width: 70px;
   height: 60px;
   border-radius: 12px;
@@ -152,10 +162,11 @@
   justify-content: center;
   color: rgba(255,255,255,0.6);
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .date-box.active {
-  background: linear-gradient(180deg, #1d4ed8 0%, #1e3a8a 100%); /* Deep blue gradient */
+  background: linear-gradient(180deg, #1d4ed8 0%, #1e3a8a 100%);
   border-color: #3b82f6;
   color: #fff;
   box-shadow: 0 10px 20px rgba(29, 78, 216, 0.3);
@@ -163,23 +174,6 @@
 
 .day-name { font-size: 0.75rem; margin-bottom: 0.2rem; }
 .day-num { font-size: 1.1rem; font-weight: 600; }
-
-.carousel-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.nav-arrow {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.03);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 /* Movie Info */
 .movie-details-block {
@@ -217,6 +211,8 @@
   justify-content: center;
   transform: translateY(-50%);
   box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+  border: none;
+  cursor: pointer;
 }
 
 .movie-info-text {
@@ -245,6 +241,7 @@
 .movie-ratings {
   display: flex;
   gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .rating-box {
@@ -276,6 +273,7 @@
 .times-row {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .time-pill {
@@ -288,6 +286,9 @@
   font-size: 1.1rem;
   transition: all 0.2s;
   flex: 1;
+  min-width: 120px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .time-pill span {
@@ -341,6 +342,9 @@
 .t-remove {
   color: rgba(255,255,255,0.3);
   padding: 0.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 .t-remove:hover { color: #fff; }
 
@@ -378,6 +382,8 @@
   padding: 1rem 3rem;
   border-radius: 30px;
   transition: all 0.2s;
+  border: none;
+  cursor: pointer;
 }
 .buy-action-btn:hover:not(:disabled) {
   background: #2563eb;
@@ -399,12 +405,14 @@
   border-radius: 20px;
   padding: 2rem;
   border: 1px solid rgba(255,255,255,0.02);
+  overflow-x: auto;
 }
 
 .screen-wrapper {
   text-align: center;
   margin-bottom: 4rem;
   width: 80%;
+  min-width: 300px;
 }
 
 .screen-curve {
@@ -426,6 +434,7 @@
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 4rem;
+  min-width: max-content;
 }
 
 .grid-row {
@@ -438,6 +447,7 @@
   color: rgba(255,255,255,0.3);
   font-size: 0.85rem;
   width: 15px;
+  text-align: center;
 }
 
 .grid-seats {
@@ -455,7 +465,9 @@
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
-  color: transparent; /* hide numbers normally */
+  color: transparent;
+  border: none;
+  cursor: pointer;
 }
 .s-btn:hover:not(.booked) {
   color: #fff;
@@ -490,6 +502,8 @@
   gap: 3rem;
   border-top: 1px solid rgba(255,255,255,0.05);
   padding-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .l-item {
@@ -516,10 +530,148 @@
   margin-right: 1.5rem;
 }
 
+/* RESPONSIVE */
 @media (max-width: 1200px) {
-  .zootopia-main { grid-template-columns: 1fr; }
-  .zootopia-right-panel { order: -1; } /* move screen to top on mobile */
+  .zootopia-main { 
+    grid-template-columns: 1fr; 
+    gap: 2rem;
+  }
+  .zootopia-right-panel { 
+    order: -1; 
+  }
   .grid-seats button:nth-child(4),
-  .grid-seats button:nth-child(12) { margin-right: 0.5rem; }
-  .s-btn { width: 22px; height: 22px; font-size: 0.6rem; }
+  .grid-seats button:nth-child(12) { 
+    margin-right: 1rem; 
+  }
+}
+
+@media (max-width: 768px) {
+  .zootopia-booking-container {
+    padding: 0;
+  }
+
+  .booking-inner-wrapper {
+    border-radius: 0;
+    border: none;
+  }
+
+  .zootopia-header {
+    padding: 1rem;
+  }
+
+  .header-right .icon-btn:not(:first-child),
+  .filter-pill.outline {
+    display: none;
+  }
+
+  .zootopia-main {
+    padding: 1.5rem 1rem;
+  }
+
+  .zootopia-right-panel {
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+  }
+
+  .movie-details-block {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .poster-wrapper {
+    width: 140px;
+  }
+
+  .movie-ratings {
+    justify-content: center;
+  }
+
+  .tickets-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .seat-grid-container {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .zootopia-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header-left, .header-right, .header-center {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .date-carousel {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .calendar-btn {
+    width: 100%;
+    height: 40px;
+  }
+
+  .movie-info-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .time-pill {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: auto;
+  }
+
+  .s-btn { 
+    width: 20px; 
+    height: 20px; 
+  }
+
+  .grid-row {
+    gap: 0.75rem;
+  }
+
+  .grid-seats {
+    gap: 0.3rem;
+  }
+
+  .grid-seats button:nth-child(4),
+  .grid-seats button:nth-child(12) { 
+    margin-right: 0.75rem; 
+  }
+
+  .r-indicator {
+    font-size: 0.75rem;
+    width: 12px;
+  }
+
+  .seat-legend-block {
+    gap: 1rem;
+    padding-top: 1.5rem;
+  }
+
+  .booking-footer {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .total-display span {
+    font-size: 1.5rem;
+    display: block;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+
+  .buy-action-btn {
+    width: 100%;
+  }
 }

@@ -74,3 +74,27 @@
   height: 100%;
   object-fit: cover;
 }
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .home-nav {
+    padding: 20px 24px;
+  }
+  .home-nav-left {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-nav {
+    padding: 16px;
+  }
+  .brand-logo h1 {
+    font-size: 24px;
+  }
+  .home-nav-right {
+    gap: 16px;
+  }
+}

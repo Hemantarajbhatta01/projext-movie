@@ -175,9 +175,103 @@
 @media (max-width: 900px) {
   .hero-title { font-size: 3.5rem; }
   .poster-card { flex: 0 0 calc(25% - 1rem); }
+  .moov-main-content { margin-top: -3rem; }
 }
 
-@media (max-width: 600px) {
-  .hero-title { font-size: 2.5rem; }
-  .poster-card { flex: 0 0 calc(33.333% - 1rem); }
+@media (max-width: 768px) {
+  .moov-hero {
+    height: 65vh;
+    min-height: 450px;
+  }
+
+  .hero-content {
+    margin-top: 12vh;
+    padding: 0 5%;
+  }
+
+  .hero-title { font-size: 2.8rem; }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .moov-btn {
+    padding: 0.75rem 1.4rem;
+    font-size: 0.9rem;
+  }
+
+  .poster-card {
+    flex: 0 0 calc(33.333% - 0.85rem);
+    min-width: 130px;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .moov-main-content {
+    margin-top: -2rem;
+    padding: 0 5%;
+  }
+
+  .moov-home-container {
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .moov-hero {
+    height: 55vh;
+    min-height: 380px;
+  }
+
+  .hero-content {
+    margin-top: 10vh;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    max-width: 100%;
+  }
+
+  .hero-desc {
+    font-size: 0.85rem;
+    margin-bottom: 1.2rem;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .moov-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .poster-card {
+    flex: 0 0 calc(50% - 0.65rem);
+    min-width: 120px;
+  }
+
+  .poster-row {
+    gap: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  .moov-main-content {
+    margin-top: -1rem;
+  }
 }
