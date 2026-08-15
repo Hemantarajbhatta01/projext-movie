@@ -130,23 +130,37 @@
   letter-spacing: -0.5px;
 }
 
-/* HORIZONTAL SCROLL ROWS */
-.poster-row {
-  display: flex;
-  gap: 1.25rem;
-  overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
-  padding-bottom: 2rem; /* Space for hover effects */
+/* CONTINUOUS SCROLL MARQUEE */
+.marquee-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  /* Soft fade at the edges for a premium look */
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
-.poster-row::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
+.marquee-content {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: scrollMarquee 30s linear infinite;
+  padding-bottom: 2rem;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 0.625rem)); }
 }
 
 /* POSTERS */
 .poster-card {
-  flex: 0 0 calc(16.666% - 1.05rem); /* Exactly 6 items per row with gap adjustment */
-  min-width: 160px;
+  flex: 0 0 auto;
+  width: clamp(160px, 15vw, 240px);
   aspect-ratio: 2/3;
   border-radius: 12px;
   overflow: hidden;
@@ -169,13 +183,12 @@
 /* RESPONSIVE */
 @media (max-width: 1200px) {
   .hero-title { font-size: 4.5rem; }
-  .poster-card { flex: 0 0 calc(20% - 1rem); }
 }
 
 @media (max-width: 900px) {
   .hero-title { font-size: 3.5rem; }
-  .poster-card { flex: 0 0 calc(25% - 1rem); }
   .moov-main-content { margin-top: -3rem; }
+  .marquee-content { animation-duration: 25s; }
 }
 
 @media (max-width: 768px) {
@@ -203,8 +216,11 @@
   }
 
   .poster-card {
-    flex: 0 0 calc(33.333% - 0.85rem);
-    min-width: 130px;
+    width: clamp(130px, 30vw, 180px);
+  }
+
+  .marquee-content {
+    animation-duration: 20s;
   }
 
   .section-title {
@@ -258,12 +274,12 @@
   }
 
   .poster-card {
-    flex: 0 0 calc(50% - 0.65rem);
-    min-width: 120px;
+    width: clamp(120px, 35vw, 160px);
   }
 
-  .poster-row {
+  .marquee-content {
     gap: 0.75rem;
+    animation-duration: 15s;
   }
 
   .section-title {

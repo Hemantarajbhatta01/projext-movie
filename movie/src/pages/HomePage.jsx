@@ -65,12 +65,20 @@ const HomePage = () => {
         {/* Trending Movies */}
         <section className="moov-section">
           <h2 className="section-title">Trending Movies</h2>
-          <div className="poster-row">
-            {trendingMovies.map((movie, idx) => (
-              <Link to={`/book/${movie._id}`} key={`trend-${idx}`} className="poster-card">
-                <img src={movie.poster} alt={movie.title} />
-              </Link>
-            ))}
+          <div className="marquee-container">
+            <div className="marquee-content">
+              {trendingMovies.map((movie, idx) => (
+                <Link to={`/book/${movie._id}`} key={`trend-orig-${idx}`} className="poster-card">
+                  <img src={movie.poster} alt={movie.title} />
+                </Link>
+              ))}
+              {/* Duplicate for seamless infinite scrolling loop */}
+              {trendingMovies.map((movie, idx) => (
+                <Link to={`/book/${movie._id}`} key={`trend-dup-${idx}`} className="poster-card" aria-hidden="true">
+                  <img src={movie.poster} alt={movie.title} />
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 

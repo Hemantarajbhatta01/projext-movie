@@ -1,11 +1,11 @@
-﻿import Movie from '../models/Movie.js';
+import Movie from '../models/Movie.js';
 
 // @desc    Get all movies
 // @route   GET /api/movies
 export const getMovies = async (req, res) => {
   try {
     const limit = req.query.limit ? Number(req.query.limit) : 0;
-    const movies = await Movie.find({}).limit(limit);
+    const movies = await Movie.find({}).sort({ createdAt: -1 }).limit(limit);
     res.json({ movies, total: movies.length, page: 1, pages: 1 });
   } catch (error) { res.status(500).json({ message: error.message }); }
 };
