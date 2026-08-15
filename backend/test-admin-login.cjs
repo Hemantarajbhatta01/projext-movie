@@ -1,6 +1,6 @@
 const http = require('http');
 
-const data = JSON.stringify({ email: 'admin@movie.com', password: 'password' });
+const data = JSON.stringify({ email: 'admin@cinematix.com', password: 'password' });
 
 const options = {
   hostname: 'localhost',
