@@ -58,6 +58,22 @@ const ManageMovies = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    const name = e.target.name;
+    if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        toast.error('File size must be less than 10MB');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData((prev) => ({ ...prev, [name]: reader.result }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -173,12 +189,20 @@ const ManageMovies = () => {
                 </div>
                 <div style={{display: 'flex', gap: '1rem'}}>
                   <div className="form-group" style={{flex: 1}}>
-                    <label>Poster URL (local path or http)</label>
-                    <input type="text" name="poster" value={formData.poster} onChange={handleChange} required />
+                    <label>Poster (Upload or URL)</label>
+                    <input type="file" name="poster" accept="image/*" onChange={handleFileUpload} style={{marginBottom: '0.5rem'}} />
+                    <input type="text" name="poster" value={formData.poster} onChange={handleChange} required placeholder="Or enter image URL" />
+                    {formData.poster && formData.poster.startsWith('data:image') && (
+                      <div style={{marginTop: '0.5rem', fontSize: '0.8rem', color: '#10b981'}}>✓ Image attached</div>
+                    )}
                   </div>
                   <div className="form-group" style={{flex: 1}}>
-                    <label>Backdrop URL</label>
-                    <input type="text" name="backdrop" value={formData.backdrop} onChange={handleChange} required />
+                    <label>Backdrop (Upload or URL)</label>
+                    <input type="file" name="backdrop" accept="image/*" onChange={handleFileUpload} style={{marginBottom: '0.5rem'}} />
+                    <input type="text" name="backdrop" value={formData.backdrop} onChange={handleChange} required placeholder="Or enter image URL" />
+                    {formData.backdrop && formData.backdrop.startsWith('data:image') && (
+                      <div style={{marginTop: '0.5rem', fontSize: '0.8rem', color: '#10b981'}}>✓ Image attached</div>
+                    )}
                   </div>
                 </div>
                 <div className="form-group">
