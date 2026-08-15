@@ -94,7 +94,8 @@ const ManageMovies = () => {
       closeModal();
       fetchMovies();
     } catch (err) {
-      toast.error('Failed to save movie');
+      console.error('Failed to save movie:', err.response?.data || err);
+      toast.error(err.response?.data?.message || err.message || 'Failed to save movie');
     }
   };
 
