@@ -63,13 +63,33 @@ const ManageMovies = () => {
     const file = e.target.files[0];
     const name = e.target.name;
     if (file) {
-      if (file.size > 10 * 1024 * 1024) {
-        toast.error('File size must be less than 10MB');
+      if (file.size > 25 * 1024 * 1024) {
+        toast.error('File size must be less than 25MB');
         return;
       }
       const reader = new FileReader();
-      reader.onloadend = () => {
-        setFormData((prev) => ({ ...prev, [name]: reader.result }));
+      reader.onloadend = (event) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          let width = img.width;
+          let height = img.height;
+          
+          const MAX_WIDTH = 1000;
+          if (width > MAX_WIDTH) {
+            height = Math.round((height * MAX_WIDTH) / width);
+            width = MAX_WIDTH;
+          }
+          
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+          
+          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7);
+          setFormData((prev) => ({ ...prev, [name]: compressedBase64 }));
+        };
+        img.src = event.target.result;
       };
       reader.readAsDataURL(file);
     }
