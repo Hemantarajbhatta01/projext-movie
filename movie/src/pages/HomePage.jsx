@@ -27,8 +27,8 @@ const HomePage = () => {
   let heroMovie = movies.find(m => m.title === 'Monsters, Inc.');
   if (!heroMovie && movies.length > 0) heroMovie = movies[0];
   
-  // We want the exact 6 movies in the trending section
-  const trendingMovies = movies.filter(m => m.title !== 'Monsters, Inc.').slice(0, 6);
+  // We want to show the movies in the trending section, allowing horizontal scroll
+  const trendingMovies = movies.filter(m => m.title !== 'Monsters, Inc.');
 
   return (
     <div className="moov-home-container">
