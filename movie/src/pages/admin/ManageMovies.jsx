@@ -9,7 +9,7 @@ const ManageMovies = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentMovie, setCurrentMovie] = useState(null);
   const [formData, setFormData] = useState({
-    title: '', description: '', genre: '', duration: '', 
+    title: '', description: '', director: '', cast: '', genre: '', duration: '', 
     releaseDate: '', rating: '', poster: '', backdrop: '', status: 'now_showing'
   });
 
@@ -34,15 +34,16 @@ const ManageMovies = () => {
     if (movie) {
       setFormData({
         title: movie.title, description: movie.description,
-        genre: movie.genre.join(', '), duration: movie.duration,
-        releaseDate: movie.releaseDate.split('T')[0],
+        director: movie.director || '', cast: movie.cast ? movie.cast.join(', ') : '',
+        genre: movie.genre ? movie.genre.join(', ') : '', duration: movie.duration,
+        releaseDate: movie.releaseDate ? movie.releaseDate.split('T')[0] : '',
         rating: movie.rating || movie.imdbRating?.split('/')[0] || '',
         poster: movie.poster, backdrop: movie.backdrop,
         status: movie.status
       });
     } else {
       setFormData({
-        title: '', description: '', genre: '', duration: '',
+        title: '', description: '', director: '', cast: '', genre: '', duration: '',
         releaseDate: '', rating: '', poster: '', backdrop: '', status: 'now_showing'
       });
     }
@@ -77,11 +78,17 @@ const ManageMovies = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const dataToSubmit = {
+        ...formData,
+        genre: typeof formData.genre === 'string' ? formData.genre.split(',').map(g => g.trim()).filter(Boolean) : formData.genre,
+        cast: typeof formData.cast === 'string' ? formData.cast.split(',').map(c => c.trim()).filter(Boolean) : formData.cast,
+      };
+
       if (currentMovie) {
-        await movieApi.updateMovie(currentMovie._id, formData);
+        await movieApi.updateMovie(currentMovie._id, dataToSubmit);
         toast.success('Movie updated successfully');
       } else {
-        await movieApi.createMovie(formData);
+        await movieApi.createMovie(dataToSubmit);
         toast.success('Movie added successfully');
       }
       closeModal();
@@ -166,6 +173,16 @@ const ManageMovies = () => {
                 <div className="form-group">
                   <label>Description</label>
                   <textarea name="description" rows="3" value={formData.description} onChange={handleChange} required></textarea>
+                </div>
+                <div style={{display: 'flex', gap: '1rem'}}>
+                  <div className="form-group" style={{flex: 1}}>
+                    <label>Director</label>
+                    <input type="text" name="director" value={formData.director} onChange={handleChange} required />
+                  </div>
+                  <div className="form-group" style={{flex: 1}}>
+                    <label>Cast (comma separated)</label>
+                    <input type="text" name="cast" value={formData.cast} onChange={handleChange} />
+                  </div>
                 </div>
                 <div style={{display: 'flex', gap: '1rem'}}>
                   <div className="form-group" style={{flex: 1}}>
