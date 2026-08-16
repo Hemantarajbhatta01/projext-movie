@@ -67,9 +67,13 @@
   flex: 0 0 auto;
   border-radius: 20px;
   width: clamp(280px, 32vw, 380px);
-  background: transparent;
-  border: none;
-  box-shadow: none;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .hero-poster-img {
