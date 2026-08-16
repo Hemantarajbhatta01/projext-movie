@@ -13,9 +13,9 @@
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-  border-radius: 6px; /* Matches the slight rounding in the image */
+  border-radius: 16px; /* Increased rounding as requested */
   padding: 0.6rem 1.5rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   gap: 1.5rem;
   color: #000;
 }
