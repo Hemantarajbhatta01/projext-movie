@@ -145,7 +145,7 @@
 /* MAIN CONTENT LAYOUT */
 .moov-main-content {
   max-width: 1600px;
-  margin: -8rem auto 0; /* Pulled up by 8rem to overlap the hero section */
+  margin: -2rem auto 0; /* Reduced negative margin to prevent overlap with poster */
   position: relative;
   z-index: 3;
   padding: 0 4%;
