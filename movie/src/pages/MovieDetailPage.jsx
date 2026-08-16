@@ -65,7 +65,7 @@ const MovieDetailPage = () => {
       <div className="detail-hero">
         <div className="hero-overlay"></div>
         <img 
-          src={movie.backdrop} 
+          src={movie.banner || movie.backdrop} 
           alt={movie.title} 
           className="hero-bg" 
         />
