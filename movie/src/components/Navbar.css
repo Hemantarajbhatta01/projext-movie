@@ -9,34 +9,21 @@
 }
 
 .pill-nav {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #ffffff;
   border-radius: 50px;
-  padding: 0.5rem 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  width: 90%;
-  max-width: 600px;
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  gap: 1.5rem;
   color: #000;
 }
 
-.pill-section {
+.pill-left, .pill-right, .pill-center {
   display: flex;
   align-items: center;
-  gap: 1rem;
-}
-
-.pill-left, .pill-right {
-  flex: 1;
-}
-
-.pill-center {
-  flex: 0 1 auto;
-}
-
-.pill-right {
-  justify-content: flex-end;
+  gap: 1.5rem;
 }
 
 .pill-avatar {
@@ -46,17 +33,17 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 1px solid #000;
+  border: 1.5px solid #000;
   color: #000;
-  margin-right: 0.5rem;
 }
 
 .pill-link {
   color: #000;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   text-decoration: none;
   font-style: italic;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
   letter-spacing: -0.5px;
 }
 
@@ -66,13 +53,13 @@
 
 .pill-brand {
   font-family: 'Brush Script MT', cursive, sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: bold;
   color: #000;
   text-decoration: none;
-  padding: 0 1rem;
-  border-left: 1px solid #eaeaea;
-  border-right: 1px solid #eaeaea;
+  padding: 0.2rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
 }
 
 .pill-hamburger {
@@ -83,7 +70,6 @@
   align-items: center;
   justify-content: center;
   color: #000;
-  margin-left: 0.5rem;
   padding: 0;
 }
 
