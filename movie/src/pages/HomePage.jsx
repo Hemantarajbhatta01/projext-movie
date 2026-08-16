@@ -24,11 +24,10 @@ const HomePage = () => {
 
   if (loading) return <div className="loading-screen">Loading...</div>;
 
-  let heroMovie = movies.find(m => m.title === 'Monsters, Inc.');
-  if (!heroMovie && movies.length > 0) heroMovie = movies[0];
+  let heroMovie = movies.length > 0 ? movies[0] : null;
   
   // We want to show the movies in the trending section, allowing horizontal scroll
-  const trendingMovies = movies.filter(m => m.title !== 'Monsters, Inc.');
+  const trendingMovies = heroMovie ? movies.filter(m => m._id !== heroMovie._id) : movies;
 
   return (
     <div className="moov-home-container">
@@ -43,12 +42,12 @@ const HomePage = () => {
           <div className="hero-gradient-overlay"></div>
           
           <div className="hero-content">
-            <h1 className="hero-title">Monsters, INC.</h1>
+            <h1 className="hero-title">{heroMovie.title}</h1>
             <p className="hero-desc">{heroMovie.description}</p>
             
             <div className="hero-buttons">
               <Link to={`/book/${heroMovie._id}`} className="moov-btn moov-btn-primary">
-                <span>Watch Now</span>
+                <span>Buy Now !</span>
                 <Play fill="currentColor" size={16} className="btn-icon" />
               </Link>
               <Link to={`/book/${heroMovie._id}`} className="moov-btn moov-btn-secondary">
