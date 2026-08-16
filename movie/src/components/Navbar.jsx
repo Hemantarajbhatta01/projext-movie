@@ -34,7 +34,9 @@ const Navbar = () => {
         </div>
 
         <div className="pill-section pill-center">
-          <Link to="/" className="pill-brand">Dribbble</Link>
+          <Link to="/" className="pill-brand">
+            <img src="/images/cinematix-logo.png" alt="Cinematix" className="brand-logo" />
+          </Link>
         </div>
 
         <div className="pill-section pill-right">
