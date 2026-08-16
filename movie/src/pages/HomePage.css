@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Forque';
+  src: url('/fonts/Forque.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .moov-home-container {
   background-color: #0c0d10; /* Very dark background, close to the image */
   min-height: 100vh;
@@ -82,10 +89,10 @@
 .hero-title {
   font-size: 5.5rem;
   font-weight: 900;
-  font-family: 'Impact', 'Arial Black', sans-serif;
-  letter-spacing: -1px;
+  font-family: 'Forque', 'Impact', 'Arial Black', sans-serif;
+  letter-spacing: 2px; /* Forque characters can be tight */
   margin-bottom: 0.5rem;
-  line-height: 1;
+  line-height: 1.1;
   text-shadow: 0 4px 15px rgba(0,0,0,0.4);
   color: #fff;
 }
