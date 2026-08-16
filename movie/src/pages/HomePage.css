@@ -17,11 +17,11 @@
 /* HERO SECTION */
 .moov-hero {
   position: relative;
-  min-height: 700px;
+  min-height: 80vh; /* Changed to vh to ensure it doesn't push content down on smaller screens */
   width: 100%;
   display: flex;
   align-items: center;
-  padding-bottom: 2rem;
+  padding-bottom: 4rem;
 }
 
 .hero-img {
@@ -145,7 +145,7 @@
 /* MAIN CONTENT LAYOUT */
 .moov-main-content {
   max-width: 1600px;
-  margin: 0 auto;
+  margin: -8rem auto 0; /* Pulled up by 8rem to overlap the hero section */
   position: relative;
   z-index: 3;
   padding: 0 4%;
