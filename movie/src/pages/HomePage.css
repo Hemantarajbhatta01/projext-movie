@@ -81,8 +81,7 @@
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
-  /* Shave off 2px from the edges in case the image file itself has a baked-in black border */
-  clip-path: inset(2px round 20px); 
+  background-color: transparent !important;
 }
 
 .hero-text-wrapper {
