@@ -36,8 +36,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(12, 13, 16, 0.9) 0%, rgba(12, 13, 16, 0.5) 45%, transparent 100%),
-              linear-gradient(to top, #0c0d10 0%, transparent 35%);
+  /* Removed heavy dark overlay to keep background bright like the image. Only dark at bottom. */
+  background: linear-gradient(to top, #0c0d10 0%, rgba(12, 13, 16, 0.6) 20%, transparent 60%);
   z-index: 1;
 }
 
@@ -60,10 +60,10 @@
 .hero-poster-wrapper {
   flex: 0 0 auto;
   background: #fff;
-  padding: 12px;
-  border-radius: 28px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-  width: clamp(250px, 30vw, 360px);
+  padding: 16px;
+  border-radius: 32px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+  width: clamp(280px, 35vw, 420px);
 }
 
 .hero-poster-img {
@@ -71,7 +71,7 @@
   height: auto;
   aspect-ratio: 2/3;
   object-fit: cover;
-  border-radius: 18px;
+  border-radius: 20px;
 }
 
 .hero-text-wrapper {
@@ -79,24 +79,25 @@
 }
 
 .hero-title {
-  font-size: 6rem;
+  font-size: 6.5rem;
   font-weight: 900;
-  font-family: 'Arial Black', Impact, sans-serif;
+  font-family: 'Impact', 'Arial Black', sans-serif;
   text-transform: uppercase;
   letter-spacing: -2px;
   margin-bottom: 0.5rem;
   line-height: 1;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  text-shadow: 2px 4px 8px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.6);
   color: #fff;
 }
 
 .hero-desc {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #fff;
   max-width: 550px;
-  line-height: 1.6;
+  line-height: 1.5;
   margin-bottom: 2.5rem;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  text-shadow: 1px 2px 5px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5);
 }
 
 .hero-buttons {
@@ -108,20 +109,20 @@
   background-color: #fff;
   color: #000;
   border-radius: 50px;
-  padding: 0.6rem 0.6rem 0.6rem 1.8rem;
+  padding: 0.8rem 1rem 0.8rem 2rem;
   font-weight: 900;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   display: inline-flex;
   align-items: center;
   gap: 1rem;
   transition: transform 0.2s, box-shadow 0.2s;
   text-decoration: none;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .moov-btn.pill-btn:hover {
   transform: scale(1.05) translateY(-2px);
-  box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
 }
 
 .play-icon-wrapper {
