@@ -97,11 +97,11 @@
 
 .hero-title {
   font-size: 5.5rem;
-  font-weight: 900;
-  font-family: 'Forque', 'Impact', 'Arial Black', sans-serif;
-  letter-spacing: 2px; /* Forque characters can be tight */
+  font-weight: 400; /* Bebas Neue only has one weight */
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  letter-spacing: 4px;
   margin-bottom: 0.5rem;
-  line-height: 1.1;
+  line-height: 1.05;
   text-shadow: 0 4px 15px rgba(0,0,0,0.4);
   color: #fff;
 }
