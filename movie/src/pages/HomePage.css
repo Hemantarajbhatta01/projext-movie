@@ -10,12 +10,11 @@
 /* HERO SECTION */
 .moov-hero {
   position: relative;
-  height: 85vh; /* Adjust height based on the image proportion */
-  min-height: 600px;
-  max-height: 800px;
+  min-height: 700px;
   width: 100%;
   display: flex;
   align-items: center;
+  padding-bottom: 5rem;
 }
 
 .hero-img {
@@ -60,7 +59,10 @@
 .hero-poster-wrapper {
   flex: 0 0 auto;
   border-radius: 20px;
-  width: clamp(250px, 30vw, 360px);
+  width: clamp(280px, 32vw, 380px);
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .hero-poster-img {
@@ -69,7 +71,8 @@
   aspect-ratio: 2/3;
   object-fit: cover;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border: none;
+  box-shadow: none;
 }
 
 .hero-text-wrapper {
@@ -135,7 +138,7 @@
 /* MAIN CONTENT LAYOUT */
 .moov-main-content {
   max-width: 1600px;
-  margin: -6rem auto 0; /* Pull content up slightly to blend with hero */
+  margin: 0 auto;
   position: relative;
   z-index: 3;
   padding: 0 4%;
