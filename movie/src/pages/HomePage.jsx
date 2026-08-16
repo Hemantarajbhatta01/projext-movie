@@ -41,19 +41,23 @@ const HomePage = () => {
           />
           <div className="hero-gradient-overlay"></div>
           
-          <div className="hero-content">
-            <h1 className="hero-title">{heroMovie.title}</h1>
-            <p className="hero-desc">{heroMovie.description}</p>
+          <div className="hero-content split-hero">
+            <div className="hero-poster-wrapper">
+              <img src={heroMovie.poster} alt={heroMovie.title} className="hero-poster-img" />
+            </div>
             
-            <div className="hero-buttons">
-              <Link to={`/book/${heroMovie._id}`} className="moov-btn moov-btn-primary">
-                <span>Buy Now !</span>
-                <Play fill="currentColor" size={16} className="btn-icon" />
-              </Link>
-              <Link to={`/book/${heroMovie._id}`} className="moov-btn moov-btn-secondary">
-                <span>Details</span>
-                <ChevronRight size={16} className="btn-icon" />
-              </Link>
+            <div className="hero-text-wrapper">
+              <h1 className="hero-title">{heroMovie.title}</h1>
+              <p className="hero-desc">{heroMovie.description}</p>
+              
+              <div className="hero-buttons">
+                <Link to={`/book/${heroMovie._id}`} className="moov-btn moov-btn-primary pill-btn">
+                  <span>BUY NOW !</span>
+                  <div className="play-icon-wrapper">
+                    <Play fill="currentColor" size={16} className="btn-icon" />
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

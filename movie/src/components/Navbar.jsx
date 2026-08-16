@@ -1,22 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Search, Bell, User, Play, Menu, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  // Optional: add scroll listener to change navbar background when scrolling down
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const navigate = useNavigate();
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -31,42 +22,26 @@ const Navbar = () => {
   }, [menuOpen]);
 
   return (
-    <nav className={`main-navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="nav-container">
-        <div className="nav-left">
-          <Link to="/" className="nav-brand">
-            M<span className="logo-play"><Play size={22} fill="currentColor" /></span>ov
-          </Link>
-          <div className="nav-links">
-            <Link to="/" className="active">Home</Link>
-            <Link to="/movies">Movies</Link>
-            <Link to="/series">Series</Link>
-            <Link to="/kids">Kids</Link>
+    <nav className="main-navbar">
+      <div className="nav-container pill-nav">
+        
+        <div className="pill-section pill-left">
+          <div className="pill-avatar">
+            <User size={18} strokeWidth={2.5} />
           </div>
+          <Link to="/movies" className="pill-link">Movies</Link>
+          <Link to="/kids" className="pill-link">Kids</Link>
         </div>
 
-        <div className="nav-right">
-          <button className="icon-btn"><Search size={20} /></button>
-          <button className="icon-btn"><Bell size={20} /></button>
-          
-          {user ? (
-            <div className="user-profile-menu">
-              {user.role === 'admin' && (
-                <Link to="/admin" className="admin-link" style={{ marginRight: '1rem', color: '#3b82f6', fontWeight: 'bold' }}>
-                  Admin Panel
-                </Link>
-              )}
-              <Link to="/bookings" style={{ marginRight: '1rem' }}>Bookings</Link>
-              <button onClick={logout} style={{ marginRight: '1rem', color: '#ef4444' }}>Logout</button>
-              <div className="avatar placeholder"><User size={16} /></div>
-            </div>
-          ) : (
-            <Link to="/login" className="login-link">Login</Link>
-          )}
+        <div className="pill-section pill-center">
+          <Link to="/" className="pill-brand">Dribbble</Link>
+        </div>
 
-          {/* Hamburger Button (mobile only) */}
-          <button className="hamburger-btn" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        <div className="pill-section pill-right">
+          <Link to="/3d" className="pill-link">3D</Link>
+          <Link to="/imax" className="pill-link">IMAX</Link>
+          <button className="pill-hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
+            {menuOpen ? <X size={24} strokeWidth={2.5} /> : <Menu size={24} strokeWidth={2.5} />}
           </button>
         </div>
       </div>
@@ -88,11 +63,16 @@ const Navbar = () => {
           <Link to="/movies" onClick={closeMenu}>Movies</Link>
           <Link to="/series" onClick={closeMenu}>Series</Link>
           <Link to="/kids" onClick={closeMenu}>Kids</Link>
+          <Link to="/3d" onClick={closeMenu}>3D</Link>
+          <Link to="/imax" onClick={closeMenu}>IMAX</Link>
           
           <div className="mobile-menu-divider" />
 
           {user ? (
             <>
+              <div className="mobile-user-info">
+                Logged in as <strong>{user.email || 'User'}</strong>
+              </div>
               {user.role === 'admin' && (
                 <Link to="/admin" className="admin-link-mobile" onClick={closeMenu}>
                   Admin Panel
@@ -100,12 +80,12 @@ const Navbar = () => {
               )}
               <Link to="/bookings" onClick={closeMenu}>My Bookings</Link>
               <div className="mobile-menu-divider" />
-              <button className="logout-btn-mobile" onClick={() => { logout(); closeMenu(); }}>
+              <button className="logout-btn-mobile" onClick={() => { logout(); closeMenu(); navigate('/'); }}>
                 Logout
               </button>
             </>
           ) : (
-            <Link to="/login" onClick={closeMenu}>Login</Link>
+            <Link to="/login" onClick={closeMenu} style={{ fontWeight: 'bold' }}>Login / Register</Link>
           )}
         </div>
       </div>
