@@ -97,12 +97,13 @@
 
 .hero-title {
   font-size: 5.5rem;
-  font-weight: 400;
-  font-family: 'Righteous', 'Impact', sans-serif;
-  letter-spacing: 2px;
+  font-weight: 900; /* Extra heavy for that cinematic pop */
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -2px; /* Tight tracking for modern feel */
   margin-bottom: 0.5rem;
-  line-height: 1.05;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  line-height: 1;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6); /* Stronger shadow for contrast */
   color: #fff;
 }
 
