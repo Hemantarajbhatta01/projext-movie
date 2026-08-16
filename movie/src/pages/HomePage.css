@@ -97,9 +97,9 @@
 
 .hero-title {
   font-size: 5.5rem;
-  font-weight: 400; /* Bebas Neue only has one weight */
-  font-family: 'Bebas Neue', 'Impact', sans-serif;
-  letter-spacing: 4px;
+  font-weight: 400;
+  font-family: 'Righteous', 'Impact', sans-serif;
+  letter-spacing: 2px;
   margin-bottom: 0.5rem;
   line-height: 1.05;
   text-shadow: 0 4px 15px rgba(0,0,0,0.4);
