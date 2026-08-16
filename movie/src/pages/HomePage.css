@@ -78,8 +78,11 @@
   aspect-ratio: 2/3;
   object-fit: cover;
   border-radius: 20px;
-  border: none;
-  box-shadow: none;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  /* Shave off 2px from the edges in case the image file itself has a baked-in black border */
+  clip-path: inset(2px round 20px); 
 }
 
 .hero-text-wrapper {
