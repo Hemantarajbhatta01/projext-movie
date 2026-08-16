@@ -53,8 +53,9 @@
 
 .split-hero {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 4rem;
+  padding-bottom: 2rem;
 }
 
 .hero-poster-wrapper {
