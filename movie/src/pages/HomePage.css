@@ -53,18 +53,14 @@
 
 .split-hero {
   display: flex;
-  align-items: flex-end;
-  gap: 4rem;
-  padding-bottom: 2rem;
+  align-items: center;
+  gap: 2rem;
 }
 
 .hero-poster-wrapper {
   flex: 0 0 auto;
-  background: #fff;
-  padding: 16px;
-  border-radius: 32px;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.8);
-  width: clamp(280px, 35vw, 420px);
+  border-radius: 20px;
+  width: clamp(250px, 30vw, 360px);
 }
 
 .hero-poster-img {
@@ -73,6 +69,7 @@
   aspect-ratio: 2/3;
   object-fit: cover;
   border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .hero-text-wrapper {
@@ -80,25 +77,23 @@
 }
 
 .hero-title {
-  font-size: 6.5rem;
+  font-size: 5.5rem;
   font-weight: 900;
   font-family: 'Impact', 'Arial Black', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   margin-bottom: 0.5rem;
   line-height: 1;
-  text-shadow: 2px 4px 8px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.6);
+  text-shadow: 0 4px 15px rgba(0,0,0,0.4);
   color: #fff;
 }
 
 .hero-desc {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 500;
   color: #fff;
   max-width: 550px;
   line-height: 1.5;
   margin-bottom: 2.5rem;
-  text-shadow: 1px 2px 5px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5);
 }
 
 .hero-buttons {
