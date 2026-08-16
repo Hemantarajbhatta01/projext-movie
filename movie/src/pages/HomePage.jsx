@@ -35,7 +35,7 @@ const HomePage = () => {
       {heroMovie && (
         <section className="moov-hero">
           <img 
-            src={heroMovie.backdrop} 
+            src={heroMovie.banner || heroMovie.backdrop} 
             alt={heroMovie.title} 
             className="hero-img" 
           />

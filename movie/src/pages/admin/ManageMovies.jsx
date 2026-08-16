@@ -10,7 +10,7 @@ const ManageMovies = () => {
   const [currentMovie, setCurrentMovie] = useState(null);
   const [formData, setFormData] = useState({
     title: '', description: '', director: '', cast: '', genre: '', duration: '', 
-    releaseDate: '', rating: '', poster: '', backdrop: '', status: 'now_showing'
+    releaseDate: '', rating: '', poster: '', backdrop: '', banner: '', status: 'now_showing'
   });
 
   const fetchMovies = async () => {
@@ -38,13 +38,13 @@ const ManageMovies = () => {
         genre: movie.genre ? movie.genre.join(', ') : '', duration: movie.duration,
         releaseDate: movie.releaseDate ? movie.releaseDate.split('T')[0] : '',
         rating: movie.rating || movie.imdbRating?.split('/')[0] || '',
-        poster: movie.poster, backdrop: movie.backdrop,
+        poster: movie.poster, backdrop: movie.backdrop, banner: movie.banner || '',
         status: movie.status
       });
     } else {
       setFormData({
         title: '', description: '', director: '', cast: '', genre: '', duration: '',
-        releaseDate: '', rating: '', poster: '', backdrop: '', status: 'now_showing'
+        releaseDate: '', rating: '', poster: '', backdrop: '', banner: '', status: 'now_showing'
       });
     }
     setIsModalOpen(true);
@@ -243,12 +243,22 @@ const ManageMovies = () => {
                     )}
                   </div>
                 </div>
-                <div className="form-group">
-                  <label>Status</label>
-                  <select name="status" value={formData.status} onChange={handleChange}>
-                    <option value="now_showing">Now Showing</option>
-                    <option value="coming_soon">Coming Soon</option>
-                  </select>
+                <div style={{display: 'flex', gap: '1rem'}}>
+                  <div className="form-group" style={{flex: 1}}>
+                    <label>Banner Picture (Upload or URL) - For Homepage Background</label>
+                    <input type="file" name="banner" accept="image/*" onChange={handleFileUpload} style={{marginBottom: '0.5rem'}} />
+                    <input type="text" name="banner" value={formData.banner} onChange={handleChange} placeholder="Or enter image URL" />
+                    {formData.banner && formData.banner.startsWith('data:image') && (
+                      <div style={{marginTop: '0.5rem', fontSize: '0.8rem', color: '#10b981'}}>✓ Image attached</div>
+                    )}
+                  </div>
+                  <div className="form-group" style={{flex: 1}}>
+                    <label>Status</label>
+                    <select name="status" value={formData.status} onChange={handleChange}>
+                      <option value="now_showing">Now Showing</option>
+                      <option value="coming_soon">Coming Soon</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <div className="modal-footer">

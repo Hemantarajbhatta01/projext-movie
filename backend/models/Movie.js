@@ -10,6 +10,7 @@ const movieSchema = mongoose.Schema({
   releaseDate: { type: Date },
   poster: { type: String },
   backdrop: { type: String },
+  banner: { type: String },
   rating: { type: Number, default: 0 },
   status: { type: String, enum: ['now_showing', 'coming_soon'], default: 'now_showing' },
 }, {
