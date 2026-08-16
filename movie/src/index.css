@@ -29,6 +29,20 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
+  
+  /* Disable text selection globally */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Ensure form elements still allow text selection */
+input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 img, video {
