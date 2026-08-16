@@ -67,7 +67,7 @@
   height: 44px;
   width: auto;
   display: block;
-  transform: rotate(-3deg);
+  transform: rotate(-3deg) translateY(-2px);
   transition: transform 0.3s ease;
 }
 
