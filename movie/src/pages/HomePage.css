@@ -34,7 +34,7 @@
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 2s ease-in-out;
+  transition: opacity 11s ease-in-out;
   display: flex;
   align-items: center;
   z-index: 0;
