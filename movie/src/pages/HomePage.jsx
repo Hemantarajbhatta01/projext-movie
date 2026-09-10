@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as movieApi from '../api/movieApi';
-import { Play, ChevronRight } from 'lucide-react';
+import { Play, ChevronRight, ChevronLeft } from 'lucide-react';
 import './HomePage.css';
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -22,44 +23,87 @@ const HomePage = () => {
     fetchMovies();
   }, []);
 
-  if (loading) return <div className="loading-screen">Loading...</div>;
+  const heroMovies = movies.slice(0, 4);
 
-  let heroMovie = movies.length > 0 ? movies[0] : null;
+  useEffect(() => {
+    if (heroMovies.length === 0) return;
+    const slideInterval = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % heroMovies.length);
+    }, 5000);
+    return () => clearInterval(slideInterval);
+  }, [heroMovies.length]);
+
+  if (loading) return <div className="loading-screen">Loading...</div>;
   
   // We want to show the movies in the trending section, allowing horizontal scroll
-  const trendingMovies = heroMovie ? movies.filter(m => m._id !== heroMovie._id) : movies;
+  const trendingMovies = movies.filter(m => !heroMovies.some(hero => hero._id === m._id));
 
   return (
     <div className="moov-home-container">
       {/* Hero Section */}
-      {heroMovie && (
+      {heroMovies.length > 0 && (
         <section className="moov-hero">
-          <img 
-            src={heroMovie.banner || heroMovie.backdrop} 
-            alt={heroMovie.title} 
-            className="hero-img" 
-          />
-          <div className="hero-gradient-overlay"></div>
-          
-          <div className="hero-content split-hero">
-            <div className="hero-poster-wrapper">
-              <img src={heroMovie.poster} alt={heroMovie.title} className="hero-poster-img" />
-            </div>
-            
-            <div className="hero-text-wrapper">
-              <h1 className="hero-title">{heroMovie.title}</h1>
-              <p className="hero-desc">{heroMovie.description}</p>
+          {heroMovies.map((movie, index) => (
+            <div 
+              key={movie._id} 
+              className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
+            >
+              <img 
+                src={movie.banner || movie.backdrop} 
+                alt={movie.title} 
+                className="hero-img" 
+              />
+              <div className="hero-gradient-overlay"></div>
               
-              <div className="hero-buttons">
-                <Link to={`/book/${heroMovie._id}`} className="moov-btn moov-btn-primary pill-btn">
-                  <span>BUY NOW !</span>
-                  <div className="play-icon-wrapper">
-                    <Play fill="currentColor" size={16} className="btn-icon" />
+              <div className="hero-content split-hero">
+                <div className="hero-poster-wrapper">
+                  <img src={movie.poster} alt={movie.title} className="hero-poster-img" />
+                </div>
+                
+                <div className="hero-text-wrapper">
+                  <h1 className="hero-title">{movie.title}</h1>
+                  <p className="hero-desc">{movie.description}</p>
+                  
+                  <div className="hero-buttons">
+                    <Link to={`/book/${movie._id}`} className="moov-btn moov-btn-primary pill-btn">
+                      <span>BUY NOW !</span>
+                      <div className="play-icon-wrapper">
+                        <Play fill="currentColor" size={16} className="btn-icon" />
+                      </div>
+                    </Link>
                   </div>
-                </Link>
+                </div>
               </div>
             </div>
-          </div>
+          ))}
+
+          {/* Slider Controls */}
+          {heroMovies.length > 1 && (
+            <>
+              <button 
+                className="slider-arrow slider-arrow-left" 
+                onClick={() => setCurrentSlide(prev => (prev === 0 ? heroMovies.length - 1 : prev - 1))}
+              >
+                <ChevronLeft size={32} />
+              </button>
+              <button 
+                className="slider-arrow slider-arrow-right" 
+                onClick={() => setCurrentSlide(prev => (prev + 1) % heroMovies.length)}
+              >
+                <ChevronRight size={32} />
+              </button>
+
+              <div className="slider-dots">
+                {heroMovies.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`slider-dot ${index === currentSlide ? 'active' : ''}`}
+                    onClick={() => setCurrentSlide(index)}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </section>
       )}
 
