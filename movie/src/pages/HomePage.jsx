@@ -23,7 +23,7 @@ const HomePage = () => {
     fetchMovies();
   }, []);
 
-  const heroMovies = movies.slice(0, 4);
+  const heroMovies = movies.slice(0, 5);
 
   useEffect(() => {
     if (heroMovies.length === 0) return;
@@ -34,7 +34,7 @@ const HomePage = () => {
   }, [heroMovies.length]);
 
   if (loading) return <div className="loading-screen">Loading...</div>;
-  
+
   // We want to show the movies in the trending section, allowing horizontal scroll
   const trendingMovies = movies.filter(m => !heroMovies.some(hero => hero._id === m._id));
 
@@ -44,26 +44,26 @@ const HomePage = () => {
       {heroMovies.length > 0 && (
         <section className="moov-hero">
           {heroMovies.map((movie, index) => (
-            <div 
-              key={movie._id} 
+            <div
+              key={movie._id}
               className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
             >
-              <img 
-                src={movie.banner || movie.backdrop} 
-                alt={movie.title} 
-                className="hero-img" 
+              <img
+                src={movie.banner || movie.backdrop}
+                alt={movie.title}
+                className="hero-img"
               />
               <div className="hero-gradient-overlay"></div>
-              
+
               <div className="hero-content split-hero">
                 <div className="hero-poster-wrapper">
                   <img src={movie.poster} alt={movie.title} className="hero-poster-img" />
                 </div>
-                
+
                 <div className="hero-text-wrapper">
                   <h1 className="hero-title">{movie.title}</h1>
                   <p className="hero-desc">{movie.description}</p>
-                  
+
                   <div className="hero-buttons">
                     <Link to={`/book/${movie._id}`} className="moov-btn moov-btn-primary pill-btn">
                       <span>BUY NOW !</span>
@@ -80,14 +80,14 @@ const HomePage = () => {
           {/* Slider Controls */}
           {heroMovies.length > 1 && (
             <>
-              <button 
-                className="slider-arrow slider-arrow-left" 
+              <button
+                className="slider-arrow slider-arrow-left"
                 onClick={() => setCurrentSlide(prev => (prev === 0 ? heroMovies.length - 1 : prev - 1))}
               >
                 <ChevronLeft size={32} />
               </button>
-              <button 
-                className="slider-arrow slider-arrow-right" 
+              <button
+                className="slider-arrow slider-arrow-right"
                 onClick={() => setCurrentSlide(prev => (prev + 1) % heroMovies.length)}
               >
                 <ChevronRight size={32} />
@@ -108,7 +108,7 @@ const HomePage = () => {
       )}
 
       <div className="moov-main-content">
-        
+
         {/* Trending Movies */}
         <section className="moov-section">
           <h2 className="section-title">Trending Movies</h2>
