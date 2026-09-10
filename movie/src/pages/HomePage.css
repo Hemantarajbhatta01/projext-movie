@@ -75,7 +75,7 @@
   width: 100%;
   margin: 0 auto;
   padding: 0 4%;
-  margin-top: 10vh; /* Adjust for new pill navbar */
+  margin-top: -5vh; /* Adjusted to move content higher */
 }
 
 .split-hero {
