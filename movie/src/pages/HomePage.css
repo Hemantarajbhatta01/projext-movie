@@ -89,8 +89,10 @@
 .split-hero {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  padding-left: 8rem;
+  gap: 3rem;
+
+  /* Move the whole poster + text group right */
+  transform: translateX(8rem);
 }
 
 .hero-poster-wrapper {
