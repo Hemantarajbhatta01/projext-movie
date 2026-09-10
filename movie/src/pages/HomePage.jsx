@@ -29,7 +29,7 @@ const HomePage = () => {
     if (heroMovies.length === 0) return;
     const slideInterval = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % heroMovies.length);
-    }, 5000);
+    }, 11000);
     return () => clearInterval(slideInterval);
   }, [heroMovies.length]);
 
