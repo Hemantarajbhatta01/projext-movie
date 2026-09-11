@@ -23,7 +23,7 @@ const HomePage = () => {
     fetchMovies();
   }, []);
 
-  const heroMovies = movies.slice(0, 5);
+  const heroMovies = movies.slice(0, 7);
 
   useEffect(() => {
     if (heroMovies.length === 0) return;
