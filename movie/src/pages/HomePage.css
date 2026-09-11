@@ -133,7 +133,7 @@
   text-transform: uppercase;
   letter-spacing: -2px;
   /* Tight tracking for modern feel */
-  margin-bottom: -1rem;
+  margin-bottom: 0.2rem;
   line-height: 1;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
   /* Stronger shadow for contrast */
