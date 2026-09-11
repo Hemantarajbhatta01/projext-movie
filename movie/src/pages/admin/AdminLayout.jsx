@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { Outlet, NavLink, Link, useNavigate } from 'react-router-dom';
 import { LayoutDashboard, Film, MonitorPlay, CalendarDays, LogOut, Home, Menu, X } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import './Admin.css';
 
 const AdminLayout = () => {
-  const { logout } = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -64,8 +64,16 @@ const AdminLayout = () => {
             <Menu size={24} />
           </button>
           <div className="topbar-right">
-            <div className="admin-avatar">A</div>
-            <span>Admin User</span>
+            <Link to="/profile" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: 'inherit' }}>
+              <div className="admin-avatar" style={{ overflow: 'hidden', padding: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                {user?.profilePicture ? (
+                  <img src={user.profilePicture} alt="Admin" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                ) : (
+                  user?.name ? user.name.charAt(0).toUpperCase() : 'A'
+                )}
+              </div>
+              <span>{user?.name || 'Admin User'}</span>
+            </Link>
           </div>
         </div>
         <div className="admin-content">

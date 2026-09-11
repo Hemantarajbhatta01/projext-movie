@@ -21,6 +21,7 @@ import RegisterPage from './pages/RegisterPage';
 import MyBookingsPage from './pages/MyBookingsPage';
 import PaymentPage from './pages/PaymentPage';
 import BookingSuccessPage from './pages/BookingSuccessPage';
+import ProfilePage from './pages/ProfilePage';
 
 // Admin Pages
 import AdminLayout from './pages/admin/AdminLayout';
@@ -51,6 +52,7 @@ function App() {
               <Route path="movies/:id" element={<MovieDetailPage />} />
               <Route path="login" element={<LoginPage />} />
               <Route path="register" element={<RegisterPage />} />
+              <Route path="profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
               <Route path="bookings" element={<ProtectedRoute><MyBookingsPage /></ProtectedRoute>} />
             </Route>
             

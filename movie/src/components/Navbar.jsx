@@ -26,9 +26,19 @@ const Navbar = () => {
       <div className="nav-container pill-nav">
         
         <div className="pill-section pill-left">
-          <div className="pill-avatar">
-            <User size={18} strokeWidth={2.5} />
-          </div>
+          {user ? (
+            <Link to="/profile" className="pill-avatar" style={{ padding: 0 }}>
+              {user.profilePicture ? (
+                <img src={user.profilePicture} alt="Profile" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+              ) : (
+                <User size={18} strokeWidth={2.5} />
+              )}
+            </Link>
+          ) : (
+            <Link to="/login" className="pill-avatar">
+              <User size={18} strokeWidth={2.5} />
+            </Link>
+          )}
           <Link to="/movies" className="pill-link">Movies</Link>
           <Link to="/kids" className="pill-link">Kids</Link>
         </div>
@@ -80,6 +90,7 @@ const Navbar = () => {
                   Admin Panel
                 </Link>
               )}
+              <Link to="/profile" onClick={closeMenu}>My Profile</Link>
               <Link to="/bookings" onClick={closeMenu}>My Bookings</Link>
               <div className="mobile-menu-divider" />
               <button className="logout-btn-mobile" onClick={() => { logout(); closeMenu(); navigate('/'); }}>
